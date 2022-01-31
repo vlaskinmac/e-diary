@@ -14,7 +14,7 @@ DEBUG = env.bool('DEBUG', True)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.getenv('DATABASE_NAME', 'schoolbase.sqlite3'),
+        'NAME': os.getenv('DATABASE_NAME'),
     }
 }
 
