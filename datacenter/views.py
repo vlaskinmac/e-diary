@@ -4,8 +4,7 @@ from django.http import Http404
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 from isoweek import Week
 
-from datacenter.models import (Chastisement, Commendation, Lesson, Mark,
-                               Schoolkid, Subject)
+from datacenter.models import (Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject)
 
 
 def get_iso_week_from_params(get_params):
@@ -199,3 +198,7 @@ def view_schoolkid(request, schoolkid_id):
         'days': [format_day_title(day) for day in asked_iso_week.days()]
     }
     return render(request, 'schoolkid_info.html', context)
+
+
+
+
