@@ -1,3 +1,4 @@
+import argparse
 import random
 
 from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
@@ -81,6 +82,24 @@ def choice_subject():
               '\nВведите номер предмета: ')
 
 
+def get_arguments():
+    parser = argparse.ArgumentParser(
+        description='The code corrects teachers grades and comments.'
+    )
+    parser.add_argument(
+        '-y', help="Use arguments: '-y' '--yes'"
+    )
+    parser.add_argument(
+        '-n', help="Use arguments: '-n' '--no'"
+    )
+    args = parser.parse_args()
+
+    if args:
+        return args.y
+    else:
+        return args.n
+
+
 name = None
 pupil = None
 commendation_subject = None
@@ -90,17 +109,20 @@ while not pupil:
 correct_points(pupil)
 remove_chastisements(pupil)
 print("\nОценки исправлены, замечания удалены")
-while True:
-    choice = input("\nДобавить похвалу учителя? Да/Нет?: ").lower()
-    if choice == "да":
-        while not commendation_subject:
-            commendation_subject = choice_subject()
-            try:
-                print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
-                create_commendation(commendation_subject, pupil)
-            except UnboundLocalError:
-                pass
-    elif choice not in ("да", "нет"):
-        print("Введите: Да/Нет")
-    elif choice == "нет":
-        exit("Конец!")
+# while True:
+# choice = input("\nДобавить похвалу учителя? y/n?: ").lower()
+print("\nДобавить похвалу учителя? y/n: ")
+choice_args = get_arguments()
+
+if choice_args== "y":
+    while not commendation_subject:
+        commendation_subject = choice_subject()
+        try:
+            print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
+            create_commendation(commendation_subject, pupil)
+        except UnboundLocalError:
+            pass
+elif choice_args=="n":
+    exit("Конец!")
+else:
+    print("Введите: y/n")
