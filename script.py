@@ -40,6 +40,7 @@ def create_commendation(commendation_subject, pupil):
                                       title=commendation_subject)
     except Subject.DoesNotExist:
         print("Такого предмета нет!")
+
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
         group_letter=pupil.group_letter,
@@ -114,7 +115,7 @@ print("\nОценки исправлены, замечания удалены")
 print("\nДобавить похвалу учителя? y/n: ")
 choice_args = get_arguments()
 
-if choice_args== "y":
+if choice_args == "y":
     while not commendation_subject:
         commendation_subject = choice_subject()
         try:
@@ -122,7 +123,8 @@ if choice_args== "y":
             create_commendation(commendation_subject, pupil)
         except UnboundLocalError:
             pass
-elif choice_args=="n":
+elif choice_args == "n":
     exit("Конец!")
 else:
     print("Введите: y/n")
+
