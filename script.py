@@ -41,7 +41,7 @@ def create_commendation(commendation_subject, pupil):
         subject = Subject.objects.get(year_of_study=pupil.year_of_study,
                                       title=commendation_subject)
     except Subject.DoesNotExist:
-        print("Такого предмета нет!")
+        pass
 
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
@@ -77,12 +77,12 @@ def choice_subject():
     for code, lesson in enumerate(subjects_collection, start=1):
         list_subjects.append(code)
         print(code, lesson['name'], sep=': ')
-    input_choice = int(input('\nВведите номер предмета: '))
-    try:
-        return subjects_collection[input_choice - 1]['code']
-    except IndexError:
-        print('Вы ввели не корректный номер предмета'
-              '\nВведите номер предмета: ')
+    while True:
+        input_choice = int(input('\nВведите номер предмета: '))
+        try:
+            return subjects_collection[input_choice - 1]['code']
+        except IndexError:
+            print('Вы ввели не корректный номер предмета!')
 
 
 def get_name(command):
