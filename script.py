@@ -91,15 +91,15 @@ def dialog(command):
     return name
 
 
-def main():
-    command = shlex.split('./dialog.sh name')
+def dialog_name(command):
     name = dialog(command)
     pupil = get_pupil(name.strip())
     correct_points(pupil)
     remove_chastisements(pupil)
+    return pupil
 
-    command = shlex.split('./dialog.sh praise')
-    choice_args = dialog(command)
+
+def dialog_praise(choice_args, pupil):
     if choice_args.strip() == "y":
         try:
             commendation_subject = choice_subject()
@@ -107,7 +107,7 @@ def main():
             print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
             response = input('Еще махинации? y/n: ')
             if response == 'y'.lower():
-                print('-' * 50,"\n")
+                print('-' * 50, "\n")
                 return response
             else:
                 exit("Конец!")
@@ -115,6 +115,15 @@ def main():
             pass
     elif choice_args.strip() == "n":
         exit("Конец!")
+
+
+def main():
+    command = shlex.split('./dialog.sh name')
+    pupil = dialog_name(command)
+
+    command = shlex.split('./dialog.sh praise')
+    choice_args = dialog(command)
+    dialog_praise(choice_args, pupil)
 
 
 response = True
