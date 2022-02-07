@@ -85,14 +85,14 @@ def choice_subject():
               '\nВведите номер предмета: ')
 
 
-def dialog(command):
+def get_name(command):
     dialog = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
     name, errors = dialog.communicate()
     return name
 
 
 def dialog_name(command):
-    name = dialog(command)
+    name = get_name(command)
     pupil = get_pupil(name.strip())
     correct_points(pupil)
     remove_chastisements(pupil)
@@ -122,7 +122,7 @@ def main():
     pupil = dialog_name(command)
 
     command = shlex.split('./dialog.sh praise')
-    choice_args = dialog(command)
+    choice_args = get_name(command)
     dialog_praise(choice_args, pupil)
 
 
