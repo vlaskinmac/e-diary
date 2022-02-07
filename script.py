@@ -12,8 +12,8 @@ def get_pupil(name):
         print("Такого ученика нет!")
         main()
     except Schoolkid.MultipleObjectsReturned:
-        print("Найдено несколько учеников, введите ФИО полностью!")
-        exit("Конец!")
+        print("Найдено несколько учеников, введите ФИО полностью!\n")
+        main()
 
 
 def correct_points(pupil):
