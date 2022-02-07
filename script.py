@@ -1,5 +1,5 @@
-import argparse
 import random
+import shlex, subprocess
 
 from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
 
@@ -10,6 +10,7 @@ def get_pupil(name):
         return pupil
     except Schoolkid.DoesNotExist:
         print("Такого ученика нет!")
+        main()
     except Schoolkid.MultipleObjectsReturned:
         print("Найдено несколько учеников, введите ФИО полностью!")
         exit("Конец!")
@@ -20,6 +21,7 @@ def correct_points(pupil):
     for mark_to_correct in marks:
         mark_to_correct.points = 5
         mark_to_correct.save()
+    print("\nОценки исправлены, замечания удалены")
 
 
 def remove_chastisements(pupil):
@@ -83,48 +85,43 @@ def choice_subject():
               '\nВведите номер предмета: ')
 
 
-def get_arguments():
-    parser = argparse.ArgumentParser(
-        description='The code corrects teachers grades and comments.'
-    )
-    parser.add_argument(
-        '-y', help="Use arguments: '-y' '--yes'"
-    )
-    parser.add_argument(
-        '-n', help="Use arguments: '-n' '--no'"
-    )
-    args = parser.parse_args()
-
-    if args:
-        return args.y
-    else:
-        return args.n
+def dialog(command):
+    dialog = subprocess.Popen(command, stdout=subprocess.PIPE, universal_newlines=True)
+    name, errors = dialog.communicate()
+    return name
 
 
-name = None
-pupil = None
-commendation_subject = None
-while not pupil:
-    name = input("Введите, фамилию и имя через пробел: ")
-    pupil = get_pupil(name)
-correct_points(pupil)
-remove_chastisements(pupil)
-print("\nОценки исправлены, замечания удалены")
-# while True:
-# choice = input("\nДобавить похвалу учителя? y/n?: ").lower()
-print("\nДобавить похвалу учителя? y/n: ")
-choice_args = get_arguments()
+def main():
+    command = shlex.split('./dialog.sh name')
+    name = dialog(command)
+    pupil = get_pupil(name.strip())
+    correct_points(pupil)
+    remove_chastisements(pupil)
 
-if choice_args == "y":
-    while not commendation_subject:
-        commendation_subject = choice_subject()
+    command = shlex.split('./dialog.sh praise')
+    choice_args = dialog(command)
+    if choice_args.strip() == "y":
         try:
-            print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
+            commendation_subject = choice_subject()
             create_commendation(commendation_subject, pupil)
+            print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
+            response = input('Еще махинации? y/n: ')
+            if response == 'y'.lower():
+                print('-' * 50,"\n")
+                return response
+            else:
+                exit("Конец!")
         except UnboundLocalError:
             pass
-elif choice_args == "n":
-    exit("Конец!")
-else:
-    print("Введите: y/n")
+    elif choice_args.strip() == "n":
+        exit("Конец!")
+
+
+response = True
+if response:
+    main()
+main()
+
+
+
 
