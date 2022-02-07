@@ -108,7 +108,7 @@ def dialog_praise(choice_args, pupil):
             response = input('Еще махинации? y/n: ')
             if response == 'y'.lower():
                 print('-' * 50, "\n")
-                return response
+                main()
             else:
                 exit("Конец!")
         except UnboundLocalError:
@@ -126,9 +126,6 @@ def main():
     dialog_praise(choice_args, pupil)
 
 
-response = True
-if response:
-    main()
 main()
 
 
