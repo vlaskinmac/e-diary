@@ -31,12 +31,22 @@ pip3 install -r requirements.txt
 
 - Data dase downloads here: [schoolbase.zip](https://github.com/vlaskinmac/e-diary/files/7985932/schoolbase.zip)
 
+## Launch code
+
+#### Arguments
+- To correct grades use argument: **-s** 
+- To correct grades and add teacher praise add argument: **-y=True** 
+
+
+**Examples of commands:**
+
+
 ```python
-$ python
-manage.py
-shell
-$
-from datacenter import script
+$ python script.py -s "Голубев Феофан" -y=True
+```
+
+```python
+$ python script.py -s "Голубев Феофан" 
 ```
 
 

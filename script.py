@@ -99,9 +99,6 @@ def get_arguments():
     parser.add_argument(
         '-y', help="-Чтобы добавить похвалу учителя используйте аргумент: -y=True"
     )
-    parser.add_argument(
-        '-n', help="-Чтобы завешить работу используйте аргумент: -n=True"
-    )
 
     args = parser.parse_args()
     return args.s, args.y, args.n
