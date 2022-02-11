@@ -3,10 +3,12 @@ import os
 import random
 
 import django
-from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
+from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
+
+
 
 
 def get_pupil(name):
@@ -45,6 +47,7 @@ def create_commendation(commendation_subject, pupil):
                                       title=commendation_subject)
     except Subject.DoesNotExist:
         pass
+
 
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
