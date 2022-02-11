@@ -9,8 +9,6 @@ django.setup()
 from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
 
 
-
-
 def get_pupil(name):
     try:
         pupil = Schoolkid.objects.get(full_name__icontains=name)
@@ -47,7 +45,6 @@ def create_commendation(commendation_subject, pupil):
                                       title=commendation_subject)
     except Subject.DoesNotExist:
         pass
-
 
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
@@ -120,5 +117,3 @@ if __name__ == "__main__":
             create_commendation(commendation_subject, pupil)
         except UnboundLocalError:
             pass
-
-
