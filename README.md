@@ -32,8 +32,11 @@ pip3 install -r requirements.txt
 - Data dase downloads here: [schoolbase.zip](https://github.com/vlaskinmac/e-diary/files/7985932/schoolbase.zip)
 
 ```python
-$ python manage.py shell
-$ import script.py
+$ python
+manage.py
+shell
+$
+from project import script
 ```
 
 
