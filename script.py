@@ -3,10 +3,10 @@ import os
 import random
 
 import django
+from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
-from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
 
 
 def get_pupil(name):
