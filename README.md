@@ -36,7 +36,7 @@ $ python
 manage.py
 shell
 $
-from project import script
+from datacenter import script
 ```
 
 

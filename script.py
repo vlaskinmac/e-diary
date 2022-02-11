@@ -2,7 +2,9 @@ import argparse
 import os
 import random
 import shlex, subprocess
+# import django
 import django
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 django.setup()
 from datacenter.models import Teacher, Chastisement, Commendation, Lesson, Mark, Schoolkid, Subject
