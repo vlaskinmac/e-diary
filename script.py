@@ -96,6 +96,9 @@ def get_arguments():
         '-s', help="-Чтобы исправить оценки используйте аргумент: -s и введите: 'фамилию имя'"
                    " в кавычках через пробел"
     )
+    parser.add_argument(
+        '-y', help="-Чтобы добавить похвалу учителя используйте аргумент: -y=True"
+    )
 
     args = parser.parse_args()
     return args.s, args.y
