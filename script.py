@@ -96,16 +96,13 @@ def get_arguments():
         '-s', help="-Чтобы исправить оценки используйте аргумент: -s и введите: 'фамилию имя'"
                    " в кавычках через пробел"
     )
-    parser.add_argument(
-        '-y', help="-Чтобы добавить похвалу учителя используйте аргумент: -y=True"
-    )
 
     args = parser.parse_args()
-    return args.s, args.y, args.n
+    return args.s, args.y
 
 
 if __name__ == "__main__":
-    only_marks, praise, terminate = get_arguments()
+    only_marks, praise = get_arguments()
     pupil = get_pupil(name=only_marks)
     correct_points(pupil)
     remove_chastisements(pupil)
@@ -117,6 +114,5 @@ if __name__ == "__main__":
             create_commendation(commendation_subject, pupil)
         except UnboundLocalError:
             pass
-    if terminate:
-        exit("Конец!")
+
 
