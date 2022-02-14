@@ -80,12 +80,12 @@ def choice_subject():
     for code, lesson in enumerate(subjects_collection, start=1):
         list_subjects.append(code)
         print(code, lesson["name"], sep=": ")
-    while True:
-        input_choice = int(input("\nВведите номер предмета: "))
-        try:
-            return subjects_collection[input_choice - 1]["code"]
-        except IndexError:
-            print("Вы ввели не корректный номер предмета!")
+    # while True:
+    input_choice = int(input("\nВведите номер предмета: "))
+    try:
+        return subjects_collection[input_choice - 1]["code"]
+    except IndexError:
+        print("Вы ввели не корректный номер предмета!")
 
 
 def get_arguments():
@@ -110,8 +110,8 @@ if __name__ == "__main__":
     correct_points(pupil)
     remove_chastisements(pupil)
     choice_args = get_arguments()
-    if praise:
-        commendation_subject = choice_subject()
+    commendation_subject = choice_subject()
+    if commendation_subject:
         try:
             print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
             create_commendation(commendation_subject, pupil)

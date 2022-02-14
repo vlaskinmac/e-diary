@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1077a1a-dc35-4ddc-b2a5-cd16d360d879" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/templates/class_info.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/templates/classes.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/templates/journal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/templates/schedule.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/templates/schoolkid_info.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datacenter/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dialog.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter/script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/datacenter/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.py" beforeDir="false" afterPath="$PROJECT_DIR$/script.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
