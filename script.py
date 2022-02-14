@@ -92,11 +92,11 @@ def get_arguments():
         description='The code corrects teachers grades and comments.'
     )
     parser.add_argument(
-        '-s', help="-Чтобы исправить оценки используйте аргумент: -s и введите: 'фамилию имя'"
+        '-n', '--name', help="-Чтобы исправить оценки используйте аргумент: -n или '--name' и введите: 'фамилию имя'"
                    " в кавычках через пробел"
     )
     parser.add_argument(
-        '-y', help="-Чтобы добавить похвалу учителя используйте аргумент: -y=True"
+        '-s', '--subject', help="-Чтобы добавить похвалу учителя используйте аргумент: -s=True или --subject=True"
     )
 
     args = parser.parse_args()
