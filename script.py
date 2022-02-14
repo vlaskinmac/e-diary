@@ -43,8 +43,8 @@ def create_commendation(commendation_subject, pupil):
     try:
         subject = Subject.objects.get(year_of_study=pupil.year_of_study,
                                       title=commendation_subject)
-    except Subject.DoesNotExist:
-        pass
+    except Subject.DoesNotExist as exc:
+        print(exc)
 
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
@@ -84,10 +84,10 @@ def choice_subject():
     try:
         input_choice = int(input("\nВведите номер предмета: "))
         return subjects_collection[input_choice - 1]["code"]
-    except IndexError as exc:
-        print(exc)
-    except ValueError as exc:
-        print(exc)
+    except IndexError:
+        print("Вы ввели не корректный номер предмета!")
+    except ValueError:
+        print("Вы не ввели номер предмета!")
 
 
 def get_arguments():
