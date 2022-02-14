@@ -11,6 +11,7 @@ __pycache__/
 build/
 develop-eggs/
 dist/
+.idea/
 downloads/
 eggs/
 .eggs/
@@ -44,14 +45,20 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+.gitignore
 nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+
 .hypothesis/
 .pytest_cache/
 cover/
 probe.py
+manage.py
+settings.py
+project
+datacenter
 # Translations
 *.mo
 *.pot
