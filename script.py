@@ -80,10 +80,13 @@ def choice_subject():
     for code, lesson in enumerate(subjects_collection, start=1):
         list_subjects.append(code)
         print(code, lesson["name"], sep=": ")
-    input_choice = int(input("\nВведите номер предмета: "))
+
     try:
+        input_choice = int(input("\nВведите номер предмета: "))
         return subjects_collection[input_choice - 1]["code"]
     except IndexError as exc:
+        print(exc)
+    except ValueError as exc:
         print(exc)
 
 
@@ -100,7 +103,7 @@ def get_arguments():
     )
 
     args = parser.parse_args()
-    return args.s, args.y
+    return args.name, args.subject
 
 
 if __name__ == "__main__":
