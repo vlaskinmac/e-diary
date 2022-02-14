@@ -18,6 +18,7 @@ def get_pupil(name):
         print("Такого ученика нет! Для справки используйте -h")
     except Schoolkid.MultipleObjectsReturned:
         print("Найдено несколько учеников, введите ФИО полностью!\n")
+        return
 
 
 def correct_points(pupil):
@@ -109,13 +110,14 @@ def get_arguments():
 if __name__ == "__main__":
     only_marks, praise = get_arguments()
     pupil = get_pupil(name=only_marks)
-    correct_points(pupil)
-    remove_chastisements(pupil)
-    choice_args = get_arguments()
-    commendation_subject = choice_subject()
-    if commendation_subject:
-        try:
-            print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
-            create_commendation(commendation_subject, pupil)
-        except UnboundLocalError as exc:
-            print(exc)
+    if pupil:
+        correct_points(pupil)
+        remove_chastisements(pupil)
+        choice_args = get_arguments()
+        commendation_subject = choice_subject()
+        if commendation_subject:
+            try:
+                print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
+                create_commendation(commendation_subject, pupil)
+            except UnboundLocalError as exc:
+                print(exc)
