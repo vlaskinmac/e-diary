@@ -115,5 +115,5 @@ if __name__ == "__main__":
         try:
             print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
             create_commendation(commendation_subject, pupil)
-        except UnboundLocalError:
-            pass
+        except UnboundLocalError as exc:
+            print(exc)
