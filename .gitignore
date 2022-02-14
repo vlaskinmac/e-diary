@@ -8,7 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-manage.py/
+manage.py
 
 build/
 develop-eggs/
@@ -61,8 +61,6 @@ coverage.xml
 .pytest_cache/
 cover/
 probe.py
-manage.py
-settings.py
 project
 datacenter
 # Translations
