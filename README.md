@@ -15,7 +15,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 Python 3.6 and later.
 
-### Installing
+
+
+## Installing
+
+- Download the main code from the repository: [fork](https://github.com/devmanorg/e-diary/tree/master)
+- Data dase downloads here: [schoolbase.zip](https://github.com/vlaskinmac/e-diary/files/7985932/schoolbase.zip)
+
 
 To install the software, you need to install the dependency packages from the file: **requirements.txt**.
 
@@ -26,27 +32,22 @@ Perform the command:
 pip3 install -r requirements.txt
 
 ```
-
 ## Launch code
-
-- Data dase downloads here: [schoolbase.zip](https://github.com/vlaskinmac/e-diary/files/7985932/schoolbase.zip)
-
-## Launch code
-
+**Files script.py and settings.py must be in the same directory.**
 #### Arguments
-- To correct grades use argument: **-s** 
-- To correct grades and add teacher praise add argument: **-y=True** 
+- To correct grades use argument: **-n or --name** 
+- To correct grades and add teacher praise add argument: **-s=True, --subject=True** 
 
 
 **Examples of commands:**
 
 
 ```python
-$ python script.py -s "Голубев Феофан" -y=True
+$ python script.py -n "Голубев Феофан" -s=True
 ```
 
 ```python
-$ python script.py -s "Голубев Феофан" 
+$ python script.py -n "Голубев Феофан" 
 ```
 
 
