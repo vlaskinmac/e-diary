@@ -80,12 +80,11 @@ def choice_subject():
     for code, lesson in enumerate(subjects_collection, start=1):
         list_subjects.append(code)
         print(code, lesson["name"], sep=": ")
-    # while True:
     input_choice = int(input("\nВведите номер предмета: "))
     try:
         return subjects_collection[input_choice - 1]["code"]
-    except IndexError:
-        print("Вы ввели не корректный номер предмета!")
+    except IndexError as exc:
+        print(exc)
 
 
 def get_arguments():
