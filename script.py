@@ -44,8 +44,8 @@ def create_commendation(commendation_subject, pupil):
     try:
         subject = Subject.objects.get(year_of_study=pupil.year_of_study,
                                       title=commendation_subject)
-    except Subject.DoesNotExist as exc:
-        print(exc)
+    except Subject.DoesNotExist:
+        exit()
 
     pupils_subject = Lesson.objects.filter(
         year_of_study=pupil.year_of_study,
