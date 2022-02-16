@@ -36,7 +36,7 @@ pip3 install -r requirements.txt
 **Files script.py and settings.py must be in the same directory.**
 #### Arguments
 - To correct grades use argument: **-n or --name** 
-- To correct grades and add teacher praise add argument: **-s=True, --subject=True** 
+- To correct grades and add teacher praise add argument: **-s, --subject** 
 
 
 **Examples of commands:**
