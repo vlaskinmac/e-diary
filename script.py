@@ -15,7 +15,7 @@ def get_pupil(name):
         print("\nОценки исправлены, замечания удалены")
         return pupil
     except Schoolkid.DoesNotExist:
-        print("Такого ученика нет! Для справки используйте -h")
+        return
     except Schoolkid.MultipleObjectsReturned:
         print("Найдено несколько учеников, введите ФИО полностью!\n")
         return
@@ -66,29 +66,12 @@ def create_commendation(commendation_subject, pupil):
     )
 
 
-def choice_subject():
-    subjects = [
+subjects = [
         "Краеведение", "География", "Математика", "Музыка", "Физкультура",
         "Изобразительное искусство", "Технология", "Русский язык", "Литература",
         "Обществознание", "Иностранный язык", "Биология", "История",
         "Основы безопасности жизнедеятельности (ОБЖ)"
     ]
-    subjects_collection = []
-    for subject in subjects:
-        subjects_collection.append({"name": f"{subject}", "code": subject})
-    print("\nВыберите название предмета из списка: \n")
-    list_subjects = []
-    for code, lesson in enumerate(subjects_collection, start=1):
-        list_subjects.append(code)
-        print(code, lesson["name"], sep=": ")
-
-    try:
-        input_choice = int(input("\nВведите номер предмета: "))
-        return subjects_collection[input_choice - 1]["code"]
-    except IndexError:
-        print("Вы ввели не корректный номер предмета!")
-    except ValueError:
-        print("Вы не ввели номер предмета!")
 
 
 def get_arguments():
@@ -100,7 +83,7 @@ def get_arguments():
                    " в кавычках через пробел"
     )
     parser.add_argument(
-        '-s', '--subject', help="-Чтобы добавить похвалу учителя используйте аргумент: -s=True или --subject=True"
+        '-s', '--subject', choices=subjects, help="-Чтобы добавить похвалу учителя используйте аргумент: -s=True или --subject=True"
     )
 
     args = parser.parse_args()
@@ -111,14 +94,13 @@ if __name__ == "__main__":
     only_marks, praise = get_arguments()
     pupil = get_pupil(name=only_marks)
     if not pupil:
-        exit()
+        print("Такого ученика нет! Для справки используйте -h")
     correct_points(pupil)
     remove_chastisements(pupil)
     choice_args = get_arguments()
-    commendation_subject = choice_subject()
-    if commendation_subject:
+    if praise:
         try:
-            print(f"\nДобавлена похвала: \nпредмет: {commendation_subject}")
-            create_commendation(commendation_subject, pupil)
+            print(f"\nДобавлена похвала: \nпредмет: {praise}")
+            create_commendation(praise, pupil)
         except UnboundLocalError as exc:
             print(exc)
