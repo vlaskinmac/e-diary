@@ -43,7 +43,7 @@ pip3 install -r requirements.txt
 
 
 ```python
-$ python script.py -n "Голубев Феофан" -s=True
+$ python script.py -n "Голубев Феофан" -s Краеведение
 ```
 
 ```python
