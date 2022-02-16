@@ -83,7 +83,8 @@ def get_arguments():
                    " в кавычках через пробел"
     )
     parser.add_argument(
-        '-s', '--subject', choices=subjects, help="-Чтобы добавить похвалу учителя используйте аргумент: -s=True или --subject=True"
+        '-s', '--subject', help="-Чтобы добавить похвалу учителя используйте аргумент: -s или --subject",
+        choices=subjects,
     )
 
     args = parser.parse_args()
